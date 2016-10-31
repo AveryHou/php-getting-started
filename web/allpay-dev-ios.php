@@ -12,13 +12,7 @@ try
 	
 	$oPayment = new AllInOne();
 	
-	/* prod env.
-	$oPayment->ServiceURL ="http://payment.allpay.com.tw/Cashier/AioCheckOut ";
-	$oPayment->HashKey = "MXgalR3bdOjt7OaZ";
-	$oPayment->HashIV = "kRPGtPOaTY9J0GUV";
-	$oPayment->MerchantID = "1096279";
-	*/
-	
+	/* test env. */
 	$oPayment->ServiceURL ="http://payment-stage.allpay.com.tw/Cashier/AioCheckOut";
 	$oPayment->HashKey = "5294y06JbISpM5x9";//這是測試帳號專用的不用改它
 	$oPayment->HashIV = "v77hoKGq4kWxNNIS";//這是測試帳號專用的不用改它
@@ -26,11 +20,6 @@ try
 	
 	$time=time();
 	/* 基本參數 */
-	/*
-	$oPayment->Send['ReturnURL'] = "http://wintopinfo.com/hungrybeeuser/return-ios.php";//請填入你主機要接受訂單付款後狀態 回傳的程式名稱 記住 該網址需能對外
-	$oPayment->Send['ClientBackURL'] ="http://wintopinfo.com/hungrybeeuser/return-ios.php";
-	$oPayment->Send['OrderResultURL'] = "http://wintopinfo.com/hungrybeeuser/return-ios.php";//請填入你主機要接受訂單付款後狀態 回傳的程式名稱 記住 該網址需能對外
-	*/
 	$oPayment->Send['ReturnURL'] = "https://hungrybeephp.herokuapp.com/return-ios.php";//請填入你主機要接受訂單付款後狀態 回傳的程式名稱 記住 該網址需能對外
 	$oPayment->Send['ClientBackURL'] ="https://hungrybeephp.herokuapp.com/return-ios.php";
 	$oPayment->Send['OrderResultURL'] = "https://hungrybeephp.herokuapp.com/return-ios.php";//請填入你主機要接受訂單付款後狀態 回傳的程式名稱 記住 該網址需能對外
