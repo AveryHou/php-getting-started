@@ -2,6 +2,7 @@
 header('Access-Control-Allow-Origin: *'); 
 header('Access-Control-Allow-Methods: GET, PUT, POST, DELETE, OPTIONS');
 header("Content-Type:text/html; charset=utf-8");
+require('../vendor/autoload.php');
 include_once('./AllPay.Payment.Integration.php');
 /*產生訂單範例*/
 try
