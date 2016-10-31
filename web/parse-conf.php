@@ -4,7 +4,7 @@ require('../vendor/autoload.php');
 use Parse\ParseClient;
 
 ParseClient::initialize('oVYLOizsuLXxCRucXmrgWF6q0OjlXc9d1fXfBDmU', '', 'IdnvI0MJAOVh2m96HVyzprD1mieHYUH2viIoSDaw');
-ParseClient::setServerURL('http://hbdevtest01.herokuapp.com/parse');
+ParseClient::setServerURL('http://hbdevtest01.herokuapp.com', 'parse');
 
 
 //Application ID, REST, MASTER
