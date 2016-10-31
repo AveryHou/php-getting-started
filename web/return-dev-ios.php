@@ -16,9 +16,9 @@ try{
 	$oPayment = new AllInOne();
 	
 	/* test env */
-	$oPayment->HashKey = "kfsPM1Mt4giDE6Hn";
-	$oPayment->HashIV = "v1iHPQuM28QCsjkd";
-	$oPayment->MerchantID = "1140692";
+	$oPayment->HashKey = "5294y06JbISpM5x9";
+	$oPayment->HashIV = "v77hoKGq4kWxNNIS";
+	$oPayment->MerchantID = "2000132";
 	
 	
 	/*  */
