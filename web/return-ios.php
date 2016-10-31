@@ -78,8 +78,9 @@ catch (Exception $e){
 	<script src="external/jquery/jquery-1.12.2.min.js"></script>
 	<script src="external/jquery-mobile/jquery.mobile-1.4.5.min.js"></script>
 	
-	<!-- parse lib -->
+	<!-- parse lib 
     <script src="external/parse-1.6.14.js"></script>
+		-->
 
 	<script>
 		$(document).on("click", "#transaction-failed", function(event) {
