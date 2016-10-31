@@ -20,9 +20,9 @@ try
 	
 	$time=time();
 	/* 基本參數 */
-	$oPayment->Send['ReturnURL'] = "https://hungrybeephp.herokuapp.com/return-ios.php";//請填入你主機要接受訂單付款後狀態 回傳的程式名稱 記住 該網址需能對外
-	$oPayment->Send['ClientBackURL'] ="https://hungrybeephp.herokuapp.com/return-ios.php";
-	$oPayment->Send['OrderResultURL'] = "https://hungrybeephp.herokuapp.com/return-ios.php";//請填入你主機要接受訂單付款後狀態 回傳的程式名稱 記住 該網址需能對外
+	$oPayment->Send['ReturnURL'] = "https://hungrybeephp.herokuapp.com/return-dev-ios.php";//請填入你主機要接受訂單付款後狀態 回傳的程式名稱 記住 該網址需能對外
+	$oPayment->Send['ClientBackURL'] ="https://hungrybeephp.herokuapp.com/return-dev-ios.php";
+	$oPayment->Send['OrderResultURL'] = "https://hungrybeephp.herokuapp.com/return-dev-ios.php";//請填入你主機要接受訂單付款後狀態 回傳的程式名稱 記住 該網址需能對外
 	
 	//$oPayment->Send['MerchantTradeNo'] = $time;//這邊是店家端所產生的訂單編號
 	$oPayment->Send['MerchantTradeNo'] = $cartId;//訂單編號
@@ -35,7 +35,7 @@ try
 	$oPayment->Send['DeviceSource'] ="M";//參數M表示使用行動版的頁面 不設定此參數 預設就是電腦版顯示
 	 
 	//$oPayment->SendExtend['PaymentInfoURL']="http://wintopinfo.com/hungrybeeuser/return-ios.php";//接受訂單狀態 回傳程式名稱 可在此程式內將付款方式寫入你的訂單中 payment_info.php 與 return.php 程式內容一樣
-	$oPayment->SendExtend['PaymentInfoURL']="https://hungrybeephp.herokuapp.com/return-ios.php";//接受訂單狀態 回傳程式名稱 可在此程式內將付款方式寫入你的訂單中 payment_info.php 與 return.php 程式內容一樣
+	$oPayment->SendExtend['PaymentInfoURL']="https://hungrybeephp.herokuapp.com/return-dev-ios.php";//接受訂單狀態 回傳程式名稱 可在此程式內將付款方式寫入你的訂單中 payment_info.php 與 return.php 程式內容一樣
 	
 	// 加入選購商品資料。
 	array_push($oPayment->Send['Items'], array('Name' => "Hungrybee美食外送", 
