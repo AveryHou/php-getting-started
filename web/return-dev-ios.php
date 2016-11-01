@@ -1,6 +1,6 @@
 <?php
 header("Content-Type:text/html; charset=utf-8");
-require_once("./parse-conf.php");
+require_once("./parse-dev-conf.php");
 include_once('./AllPay.Payment.Integration.php');
 
 use Parse\ParseCloud;

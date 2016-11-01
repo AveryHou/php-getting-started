@@ -15,7 +15,7 @@ $szTradeDate = "";
 try{
 	$oPayment = new AllInOne();
 	
-	/* test env */
+	/* Prod env */
 	$oPayment->HashKey = "kfsPM1Mt4giDE6Hn";
 	$oPayment->HashIV = "v1iHPQuM28QCsjkd";
 	$oPayment->MerchantID = "1140692";
