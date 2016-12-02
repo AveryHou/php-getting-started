@@ -19,7 +19,6 @@ try
 	$oPayment->MerchantID = "2000132";//這是測試帳號專用的不用改它
 
 	$time=time();
-	echo "id.....". $cartId . $time;
 	
 	/* 基本參數 */
 	$oPayment->Send['ReturnURL'] = "https://hungrybeephp.herokuapp.com/return-dev.php";//請填入你主機要接受訂單付款後狀態 回傳的程式名稱 記住 該網址需能對外
@@ -28,7 +27,7 @@ try
 	$oPayment->Send['OrderResultURL'] = "https://hungrybeephp.herokuapp.com/return-dev.php";//請填入你主機要接受訂單付款後狀態 回傳的程式名稱 記住 該網址需能對外
 	
 	//$oPayment->Send['MerchantTradeNo'] = $time;//這邊是店家端所產生的訂單編號
-	$oPayment->Send['MerchantTradeNo'] = $cartId . $time;//訂單編號
+	$oPayment->Send['MerchantTradeNo'] = $cartId;//訂單編號
 	$oPayment->Send['MerchantTradeDate'] = date("Y/m/d H:i:s");
 	$oPayment->Send['TotalAmount'] = $price;//付款總金額
 	$oPayment->Send['TradeDesc'] = "Hungrybee美食外送(測試區)";//交易敘述
