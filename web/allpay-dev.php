@@ -19,6 +19,8 @@ try
 	$oPayment->MerchantID = "2000132";//這是測試帳號專用的不用改它
 
 	$time=time();
+	echo "id.....". $cartId . $time;
+	
 	/* 基本參數 */
 	$oPayment->Send['ReturnURL'] = "https://hungrybeephp.herokuapp.com/return-dev.php";//請填入你主機要接受訂單付款後狀態 回傳的程式名稱 記住 該網址需能對外
 	$oPayment->Send['ClientBackURL'] ="https://hungrybeephp.herokuapp.com/return-dev.php";
