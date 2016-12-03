@@ -78,9 +78,6 @@ catch (Exception $e){
 	<script src="external/jquery/jquery-1.12.2.min.js"></script>
 	<script src="external/jquery-mobile/jquery.mobile-1.4.5.min.js"></script>
 	
-	<!-- parse lib -->
-    <script src="external/parse-1.6.14.js"></script>
-
 	<style>
 		.app-btn {	
 			background: #F25B20 !important;
