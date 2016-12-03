@@ -1,9 +1,7 @@
 <?php
 header("Content-Type:text/html; charset=utf-8");
-require_once("./parse-dev-conf.php");
 include_once('./AllPay.Payment.Integration.php');
 
-use Parse\ParseCloud;
 
 $result = "fail";
 
@@ -14,12 +12,11 @@ $szTradeDate = "";
 
 try{
 	$oPayment = new AllInOne();
-	
-	/* test env */
+		
+	/* 這是測試帳號專用. */
 	$oPayment->HashKey = "5294y06JbISpM5x9";
 	$oPayment->HashIV = "v77hoKGq4kWxNNIS";
 	$oPayment->MerchantID = "2000132";
-	
 	
 	/*  */
 	$arFeedback = $oPayment->CheckOutFeedback();
@@ -78,6 +75,16 @@ catch (Exception $e){
 	<script src="external/jquery/jquery-1.12.2.min.js"></script>
 	<script src="external/jquery-mobile/jquery.mobile-1.4.5.min.js"></script>
 	
+	<!-- parse lib -->
+    <script src="external/parse-1.6.14.js"></script>
+
+	<script>
+		$(document).on("click", "#closeMe", function(event) {
+			//$.mobile.changePage("test-allpay.html");
+			window.location = "food-court.html";
+		});		
+	</script>
+	
 	<style>
 		.app-btn {	
 			background: #F25B20 !important;
@@ -96,15 +103,16 @@ catch (Exception $e){
 	
 <?php 
 	if ($result == "success") {
-		$results = ParseCloud::run("setCartOnBid" , array("stamp"=> $szMerchantTradeNo, 
-														"allPayNo"=> $szTradeNo));	
 ?>
 		<div data-role="page" id="paySuccessPage">
+			<div data-role="header">
+				<h1>交易結果</h1>
+			</div>
 			<div data-role="content">
 				<ul data-role="listview" >
 					<li style="background-color:#FF6F0D">
 						<div class="ui-grid-solo">
-							<div style="text-align:center;height:25px;font-size:20px;color:white;padding-top: 1px;">付款成功(dev)</div>
+							<div style="text-align:center;height: 80px;font-size:3em;color:white;padding-top: 12px;">付款成功</div>
 						</div>
 					</li>
 					
@@ -137,45 +145,82 @@ catch (Exception $e){
 							<div class="ui-block-b a-color" style="width:70%">03-6230127</div>
 						</div>
 					</li>
-					<!--li>
-						<div class="ui-grid-solo">
-							<a href="#" data-role="button"  rel="external" class="app-btn" id="transaction-success">回美食地圖</a>
-						</div>
-					</li-->
 				</ul>
 			</div>
 		</div>	
+		
+		
+		<script>
+		
+			/** test env. **/
+			var appid = "oVYLOizsuLXxCRucXmrgWF6q0OjlXc9d1fXfBDmU";
+			var jskey = "DlJPmV5Q3XQ3U2ykpqJjXauadeEkOESicvhsHJ40"
+			Parse.initialize(appid, jskey);
+			
+			updateCart();
+			
+			function updateCart() {
+				//更新數量
+				Parse.Cloud.run("setCartOnBid", 
+					{	
+						//cartId: <?php echo "'". $szMerchantTradeNo. "'"?>,
+						stamp: "<?php echo $szMerchantTradeNo; ?>",
+						allPayNo: "<?php echo $szTradeNo; ?>"
+					}, 
+					{
+					success: function(results) {
+						console.log("<?php echo $szMerchantTradeNo; ?> cart submitted");
+					},
+				 	error: function(error) {
+				 		console.log("setCartReady error:" + error.message);
+					}
+				});	
+			}
+			
+			
+			var element = document.getElementById('go');
+		
+			function myFunction() {
+				console.log(" iframe will create");
+			  	//generate same domain iframe
+			  	if(typeof(exec_obj)=='undefined'){  
+			        exec_obj = document.createElement('iframe');  
+			        exec_obj.name = 'tmp_frame';  
+			        exec_obj.src = 'http://wintopinfo.com/hungrybeeuser/execB.html';
+			        exec_obj.style.display = 'block';  
+			        document.body.appendChild(exec_obj);  
+			        console.log(" iframe did create ");
+			    } else {  
+			        exec_obj.src = 'http://wintopinfo.com/hungrybeeuser/execB.html?' + Math.random();  
+			    }
+			}
+			
+			element.onclick = myFunction; // Assigned	
+		</script>
 		
 <?php
 	} else {
 ?>
 		<div data-role="page" id="payFailPage">
+			<div data-role="header">
+				<h1>交易結果</h1>
+			</div>
 			<div data-role="content">
 				<ul data-role="listview" >
 					<li style="background-color:#FF6F0D">
 						<div class="ui-grid-solo">
-							<div style="text-align:center;height:25px;font-size:20px;color:white;padding-top: 1px;">交易失敗</div>
-						</div>
-					</li>
-					<li>
-						<div class="ui-grid-solo">
-							<span class="a-color" style="white-space: normal;">信用卡交易失敗，交易編號 <?php echo $szMerchantTradeNo; ?>。</span>
-						</div>
-					</li>
-					<li>
-						<div class="ui-grid-solo">
-							<span class="a-color" style="white-space: normal;">請聯絡客服協助處理或回購物車重新結帳。</span>
+							<div style="text-align:center;height: 80px;font-size:3em;color:white;padding-top: 12px;">交易失敗</div>
 						</div>
 					</li>
 					<li>
 						<div class="ui-grid-a">
-							<div class="ui-block-a a-color" style="width:30%">客服專線</div>
-							<div class="ui-block-b a-color" style="width:70%">03-6230127</div>
+							<div class="ui-block-a" style="width:30%">請聯絡客服</div>
+							<div class="ui-block-b" style="width:70%">03-6230127</div>
 						</div>
 					</li>
 					<li>
 						<div class="ui-grid-solo">
-							<a href="#" data-role="button"  rel="external" class="app-btn"  id="transaction-failed">回購物車重新結帳</a>
+							<a href="#" data-role="button"  rel="external" class="app-btn" id="go">回美食地圖</a>
 						</div>
 					</li>
 				</ul>
@@ -187,5 +232,4 @@ catch (Exception $e){
 
 
 </body>
-
 </html>
