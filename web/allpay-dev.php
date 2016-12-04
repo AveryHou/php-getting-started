@@ -12,16 +12,12 @@ try
 	
 	$oPayment = new AllInOne();
 	
-	/* test env. 
+	/* test env. */ 
 	$oPayment->ServiceURL ="http://payment-stage.allpay.com.tw/Cashier/AioCheckOut";
 	$oPayment->HashKey = "5294y06JbISpM5x9";//這是測試帳號專用的不用改它
 	$oPayment->HashIV = "v77hoKGq4kWxNNIS";//這是測試帳號專用的不用改它
 	$oPayment->MerchantID = "2000132";//這是測試帳號專用的不用改它
-	*/
-	$oPayment->ServiceURL ="http://payment.allpay.com.tw/Cashier/AioCheckOut ";
-	$oPayment->HashKey = "kfsPM1Mt4giDE6Hn";
-	$oPayment->HashIV = "v1iHPQuM28QCsjkd";
-	$oPayment->MerchantID = "1140692";
+	
 	
 	$time=time();
 	

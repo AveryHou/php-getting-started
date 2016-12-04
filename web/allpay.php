@@ -33,7 +33,7 @@ try
 	$oPayment->Send['ChoosePayment'] = PaymentMethod::Credit;//付款方式 這邊是開啟所有付款方式讓消費者自行選擇
 	
 	$oPayment->Send['IgnorePayment'] ="Alipay";//把不的付款方式取消掉
-	$oPayment->Send['DeviceSource'] ="M";//參數M表示使用行動版的頁面 不設定此參數 預設就是電腦版顯示
+	$oPayment->Send['DeviceSource'] = DeviceType::Mobile;//參數M表示使用行動版的頁面 不設定此參數 預設就是電腦版顯示
 	 
 	$oPayment->SendExtend['PaymentInfoURL']="https://hungrybeephp.herokuapp.com/return.php";//接受訂單狀態 回傳程式名稱 可在此程式內將付款方式寫入你的訂單中 payment_info.php 與 return.php 程式內容一樣
 	// 加入選購商品資料。
