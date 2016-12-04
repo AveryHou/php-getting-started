@@ -13,10 +13,14 @@ $szTradeDate = "";
 try{
 	$oPayment = new AllInOne();
 		
-	/* 這是測試帳號專用. */
+	/* 這是測試帳號專用. 
 	$oPayment->HashKey = "5294y06JbISpM5x9";
 	$oPayment->HashIV = "v77hoKGq4kWxNNIS";
 	$oPayment->MerchantID = "2000132";
+	*/
+	$oPayment->HashKey = "kfsPM1Mt4giDE6Hn";
+	$oPayment->HashIV = "v1iHPQuM28QCsjkd";
+	$oPayment->MerchantID = "1140692";
 	
 	/*  */
 	$arFeedback = $oPayment->CheckOutFeedback();
